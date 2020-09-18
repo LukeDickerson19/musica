@@ -1,0 +1,32 @@
+
+
+
+DESCRIPTION:
+
+
+TO DO:
+
+	pyqt
+		make it use pyqt instead of matplotlib
+			give it display options:
+				Soundwave
+					make it so its not moving to the side like in the current plot but just wobbling like a string
+					make y axis have amplitude in Amps (or whatever Amplitude's units ar, decibles I think)
+				Frequency
+					y axis notes (or Hz)
+				5 line Sheet Music
+				Tab
+
+				Guitar FretBoard
+
+				NOTE
+					for frequency, 5 line sheet music, and Tab, make it so the user can control how fast the x axis (time) scrolls
+						through the GUI (via a slide bar probably so that theres a max and a min)
+
+SOURCES:
+
+	Sounddevice is the library used to input the raw soundwave data
+		the plot_input.py example is used to capture the sound from each channel of the scarlett 2i2 interface
+		https://python-sounddevice.readthedocs.io/en/0.3.7/examples.html
+	https://python-sounddevice.readthedocs.io/en/0.3.7/
+
