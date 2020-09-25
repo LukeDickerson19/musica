@@ -1,0 +1,6 @@
+
+initializing audio input ...
+    downsample: 10
+    samplerate: 44100.0
+audio input initialized
+Done

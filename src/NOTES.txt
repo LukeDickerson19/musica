@@ -1,27 +1,101 @@
 
 
-
 DESCRIPTION:
 
 
 TO DO:
 
-	pyqt
-		make it use pyqt instead of matplotlib
-			give it display options:
-				Soundwave
-					make it so its not moving to the side like in the current plot but just wobbling like a string
-					make y axis have amplitude in Amps (or whatever Amplitude's units ar, decibles I think)
-				Frequency
-					y axis notes (or Hz)
-				5 line Sheet Music
-				Tab
+	make basic python version of fft thing
+		see sd_spectrogram.pyin old_musica/src
 
-				Guitar FretBoard
+	migrate to c++ and port audio
 
-				NOTE
-					for frequency, 5 line sheet music, and Tab, make it so the user can control how fast the x axis (time) scrolls
-						through the GUI (via a slide bar probably so that theres a max and a min)
+	it would be cool if:
+		in the soundwave chart:
+			there was a title
+				when the GraphicsWindow gets its own window the title appears
+				but its gone when its a child of the mainwindow
+			both plots appear on the same graph
+				color coded with a legend
+				put color codes in style sheet that could be organized as part of a theme
+			you could have a checkbox for each channel, when cheched theire visable
+				maybe this is in the view dropdown, and maybe its for other views too
+			you could have a zoom scroll bar (modifies x_range, range: 20 to 500, default: 250)
+			you could have a zoom scroll bar (modifies y_range, range: ? to ?)
+			you could have a [pause] button that captures what the wave looks like when you press it
+
+
+		give it display options:
+			Soundwave
+				make it so its not moving to the side like in the current plot but just wobbling like a string
+				make y axis have amplitude in Amps (or whatever Amplitude's units ar, decibles I think)
+			Frequency
+				y axis notes (or Hz)
+			5 line Sheet Music
+			Tab
+
+			Guitar FretBoard
+
+			NOTE
+				for frequency, 5 line sheet music, and Tab, make it so the user can control how fast the x axis (time) scrolls
+					through the GUI (via a slide bar probably so that theres a max and a min)
+
+
+GUI DESIGN:
+
+	File:
+		New
+		Open
+		Save
+		Save As
+		Close
+
+	View:
+		Fullscreen On/Off F11
+		Number of Views > 
+		Theme
+			Light
+			Dark
+			Punk
+			Pop
+			Metal
+			Custom
+
+		I want to be able to control
+			the number of views
+			the number of instruments on each view
+			the placement of the views
+				stacked
+					veritcal
+					horizontal
+				grid view
+				etc.
+
+		Sound Wave
+		Piano Keys
+			with options
+				left (default)
+				right
+				top
+				bottom
+		Sheet Music
+		Guitar Tab
+		Fret Board
+			left handed
+			right handed (default)
+
+
+
+	Setup:
+		Interface
+		Guitar Calibration
+
+		OR I could make it have a video game style options
+			Campaign
+			Lessons
+			Song Writing
+
+		Basic Setup
 
 SOURCES:
 
