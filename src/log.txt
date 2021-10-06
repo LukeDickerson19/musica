@@ -1,6 +1,4 @@
 
 initializing audio input ...
-    downsample: 10
-    samplerate: 44100.0
-audio input initialized
+failed to find device: Scarlett 2i2
 Done

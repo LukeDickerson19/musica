@@ -13,8 +13,11 @@ import subprocess
 import threading
 import queue
 import numpy as np
+import scipy
 import sounddevice as sd
 import pathlib
+import pandas as pd
+import numpy as np
 
 # local libraries and file paths
 REPO_PATH		= str(pathlib.Path(__file__).resolve().parent.parent)
@@ -31,7 +34,42 @@ import logging_utils
 
 
 # global variables
-log = logging_utils.Log('./log.txt') # init log as global var so it doesn't need to be passed to functions
+
+A_MAJOR = {
+	1 : [  5,   None,  6,  None,  7,    1,   None,  2,  None,  3,    4,   None,  5,   None,  6,  None,  7,    1,   None,  2,  None,  3,   4,   None,  5  ],
+	2 : [  2,   None,  3,   4,   None,  5,   None,  6,  None,  7,    1,   None,  2,   None,  3,   4,   None,  5,   None,  6,  None,  7,   1,   None,  2  ],
+	3 : [ None,  7,    1,  None,  2,   None,  3,    4,  None,  5,   None,  6,   None,  7,    1,  None,  2,   None,  3,    4,  None,  5,  None,  6,   None],
+	4 : [  4,   None,  5,  None,  6,   None,  7,    1,  None,  2,   None,  3,    4,   None,  5,  None,  6,   None,  7,    1,  None,  2,  None,  3,    4  ],
+	5 : [  1,   None,  2,  None,  3,    4,   None,  5,  None,  6,   None,  7,    1,   None,  2,  None,  3,    4,   None,  5,  None,  6,  None,  7,    1  ],
+	6 : [  5,   None,  6,  None,  7,    1,   None,  2,  None,  3,    4,   None,  5,   None,  6,  None,  7,    1,   None,  2,  None,  3,   4,   None,  5  ]
+}
+SCALE_NAMES = [
+	'A major',
+	'G# major',
+	'G major',
+	'F# major',
+	'F major',
+	'E major',
+	'D# major',
+	'D major',
+	'C# major',
+	'C major',
+	'B major',
+	'A# major'
+]
+MODE_NAMES = [
+	'Ionian',
+	'Dorian',
+	'Phrygian',
+	'Lydian',
+	'Mixolydian',
+	'Aeolian',
+	'Locrian'
+]
+
+
+log_filepath = os.path.join(SRC_PATH, 'log.txt')
+log = logging_utils.Log(log_filepath) # init log as global var so it doesn't need to be passed to functions
 properties = general_utils.Properties(PROPERTY_FILEPATH)
 
 # enum of views
@@ -77,6 +115,7 @@ class AudioInput:
 	def audio_callback(self, indata, frames, time, status):
 		if status:
 			print(status, file=sys.stderr)
+		# print(len(indata), time)
 		self.q.put(indata[::self.downsample, self.mapping])
 
 
